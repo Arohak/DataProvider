@@ -1,14 +1,11 @@
 //
-//  TableDataProvider.swift
-//  Weather_MVVM
-//
 //  Created by Ara Hakobyan on 06.03.21.
 //  Copyright © 2020 AroHak. All rights reserved.
 //
 
 import UIKit
 
-public class TableDataProvider<View: ContainerView, Cell: TableViewCell<View>>: NSObject, UITableViewDataSource, UITableViewDelegate {
+public class GenericTableDataProvider<View: ContainerView, Cell: TableViewCell<View>>: NSObject, UITableViewDataSource, UITableViewDelegate {
     
     struct Settings {
         var heightForRow: CGFloat? = nil

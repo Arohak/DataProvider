@@ -1,24 +1,22 @@
 //
-//  DetailCollectionDataProvider copy.swift
-//  Weather_MVVM
-//
 //  Created by Ara Hakobyan on 06.03.21.
 //  Copyright © 2020 AroHak. All rights reserved.
 //
 
 import UIKit
 
-public class CollectionDataProvider<View: ContainerView, Cell: CollectionViewCell<View>>: NSObject, UICollectionViewDataSource, UICollectionViewDelegate {
-    
-    struct Settings {
-    }
+public class GenericCollectionDataProvider
+<
+    View: ContainerView, Cell: CollectionViewCell<View>
+>
+: NSObject, UICollectionViewDataSource, UICollectionViewDelegate {
     
     public var didSelect: ((View.Model) -> Void)?
-    private var settings: Settings!
+    private var settings: GenericCollectionViewSettings!
     private weak var collectionView: UICollectionView!
     private var models = [View.Model]()
 
-    init(with settings: Settings = .init(), collectionView: UICollectionView) {
+    init(with settings: GenericCollectionViewSettings = .init(), collectionView: UICollectionView) {
         super.init()
         self.settings = settings
         self.collectionView = collectionView

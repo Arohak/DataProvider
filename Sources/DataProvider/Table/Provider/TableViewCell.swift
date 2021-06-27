@@ -1,9 +1,5 @@
 //
-//  TableViewCell.swift
-//  Weather_MVVM
-//
-//  Created by Ara Hakobyan on 06.03.21.
-//  Copyright © 2020 AroHak. All rights reserved.
+//  Created by Ara Hakobyan on 27.06.21.
 //
 
 import UIKit

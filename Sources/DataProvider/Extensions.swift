@@ -1,11 +1,17 @@
-//
-//  Extensions.swift
-//  Test
-//
-//  Created by Ara Hakobyan on 11/11/20.
+//  
+//  Created by Ara Hakobyan on 28/04/2019.
+//  Copyright © 2020 AroHak. All rights reserved.
 //
 
 import UIKit
+
+public typealias Completion<T> = (T) -> (Void)
+
+extension Collection {
+    subscript(safe index: Index) -> Element? {
+        return indices.contains(index) ? self[index] : nil
+    }
+}
 
 extension UITableViewCell {
     static let reuseId = String(describing: self)
