@@ -28,7 +28,7 @@ extension UICollectionReusableView {
 // MARK: - UITableView
 extension UITableView {
     func registerCell<Cell: UITableViewCell>(_ cellClass: Cell.Type) {
-        register(cellClass, forCellReuseIdentifier: String(describing: Cell.self))
+        register(cellClass, forCellReuseIdentifier: Cell.reuseId)
     }
     
     func dequeueReusableCell<Cell: UITableViewCell>(_ indexPath: IndexPath) -> Cell {
