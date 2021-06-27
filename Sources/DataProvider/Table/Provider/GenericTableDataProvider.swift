@@ -7,16 +7,12 @@ import UIKit
 
 public class GenericTableDataProvider<View: ContainerView, Cell: TableViewCell<View>>: NSObject, UITableViewDataSource, UITableViewDelegate {
     
-    struct Settings {
-        var heightForRow: CGFloat? = nil
-    }
-    
-    public var didSelect: ((View.Model) -> Void)?
-    private var settings: Settings!
+    public var didSelect: Completion<View.Model>?
+    private var settings: GenericTableViewSettings!
     private weak var tableView: UITableView!
     private var models = [View.Model]()
 
-    public init(with settings: Settings = .init(), tableView: UITableView) {
+    public init(with settings: GenericTableViewSettings = .init(), tableView: UITableView) {
         super.init()
         self.settings = settings
         self.tableView = tableView
