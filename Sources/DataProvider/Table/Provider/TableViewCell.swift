@@ -4,7 +4,7 @@
 
 import UIKit
 
-public class TableViewCell<View: ContainerView>: UITableViewCell {
+open class TableViewCell<View: ContainerView>: UITableViewCell {
     public lazy var view: View = {
         let view = View()
         contentView.addSubview(view)
