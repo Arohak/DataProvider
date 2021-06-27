@@ -16,7 +16,7 @@ public class GenericTableDataProvider<View: ContainerView, Cell: TableViewCell<V
     private weak var tableView: UITableView!
     private var models = [View.Model]()
 
-    init(with settings: Settings = .init(), tableView: UITableView) {
+    public init(with settings: Settings = .init(), tableView: UITableView) {
         super.init()
         self.settings = settings
         self.tableView = tableView

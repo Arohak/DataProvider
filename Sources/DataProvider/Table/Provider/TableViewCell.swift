@@ -4,7 +4,7 @@
 
 import UIKit
 
-public class TableViewCell<View: ContainerView>: UITableViewCell {
+open class TableViewCell<View: ContainerView>: UITableViewCell {
     public lazy var view: View = {
         let view = View()
         contentView.addSubview(view)
@@ -28,7 +28,7 @@ public class TableViewCell<View: ContainerView>: UITableViewCell {
         self.initialize()
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
