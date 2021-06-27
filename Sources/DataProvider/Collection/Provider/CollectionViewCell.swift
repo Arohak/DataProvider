@@ -32,5 +32,5 @@ public class CollectionViewCell<View: ContainerView>: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func initialize() { /* Override point */ }
+    public func initialize() { /* Override point */ }
 }
