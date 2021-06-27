@@ -32,5 +32,5 @@ open class TableViewCell<View: ContainerView>: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public func initialize() { /* Override point */ }
+    open func initialize() { /* Override point */ }
 }
