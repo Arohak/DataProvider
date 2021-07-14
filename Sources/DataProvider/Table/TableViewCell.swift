@@ -5,7 +5,7 @@
 
 import UIKit
 
-public class TableViewCell<Model>: UITableViewCell {
+open class TableViewCell<Model>: UITableViewCell {
     var index: Int!
     var model: Model!
     var action: Completion<Model>?

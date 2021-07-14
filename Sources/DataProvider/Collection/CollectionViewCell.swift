@@ -4,7 +4,7 @@
 
 import UIKit
 
-public class CollectionViewCell<Model>: UICollectionViewCell {
+open class CollectionViewCell<Model>: UICollectionViewCell {
     var index: Int!
     var model: Model!
     var action: Completion<Model>?

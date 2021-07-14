@@ -5,7 +5,7 @@
 
 import UIKit
 
-public class BaseCollectionReusableView<Model>: UICollectionReusableView {
+open class BaseCollectionReusableView<Model>: UICollectionReusableView {
     var index: Int!
     var model: Model!
     var action: Completion<Model>?

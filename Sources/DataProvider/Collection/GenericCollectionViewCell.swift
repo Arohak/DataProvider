@@ -4,7 +4,7 @@
 
 import UIKit
 
-public class GenericCollectionViewCell<View: ContainerView>: CollectionViewCell<View.Model> {
+open class GenericCollectionViewCell<View: ContainerView>: CollectionViewCell<View.Model> {
     public lazy var view: View = {
         let view = View()
         addSubview(view)

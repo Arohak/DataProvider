@@ -5,7 +5,7 @@
 
 import UIKit
 
-public class BaseTableViewHeaderFooterView<Model>: UITableViewHeaderFooterView {
+open class BaseTableViewHeaderFooterView<Model>: UITableViewHeaderFooterView {
     var index: Int!
     var model: Model!
     var action: Completion<Model>?
