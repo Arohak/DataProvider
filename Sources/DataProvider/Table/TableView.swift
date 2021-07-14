@@ -5,33 +5,34 @@
 
 import UIKit
 
-public class GenericTableViewWithoutHeaderFooter
+public class TableViewWithoutHeaderFooter
 <
-    Cell: TableViewCell<Model>, Model
+    Cell: TableViewCell<View>, View
 >
-: GenericTableView<Cell, Model, BaseTableViewHeaderFooterView<Any>, Any, BaseTableViewHeaderFooterView<Any>, Any> { }
+: TableView<Cell, View, TableViewHeaderFooterView<Any>, Any, TableViewHeaderFooterView<Any>, Any> { }
 
-public class GenericTableViewWithoutFooter
+public class TableViewWithoutFooter
 <
-    Cell: TableViewCell<Model>, Model,
-    Header: BaseTableViewHeaderFooterView<HeaderModel>, HeaderModel
+    Cell: TableViewCell<View>, View,
+    Header: TableViewHeaderFooterView<HeaderModel>, HeaderModel
 >
-: GenericTableView<Cell, Model, Header, HeaderModel, BaseTableViewHeaderFooterView<Any>, Any> { }
+: TableView<Cell, View, Header, HeaderModel, TableViewHeaderFooterView<Any>, Any> { }
 
-public class GenericTableViewWithoutHeader
+public class TableViewWithoutHeader
 <
-    Cell: TableViewCell<Model>, Model,
-    Footer: BaseTableViewHeaderFooterView<FooterModel>, FooterModel
+    Cell: TableViewCell<View>, View,
+    Footer: TableViewHeaderFooterView<FooterModel>, FooterModel
 >
-: GenericTableView<Cell, Model, BaseTableViewHeaderFooterView<Any>, Any, Footer, FooterModel> { }
+: TableView<Cell, View, TableViewHeaderFooterView<Any>, Any, Footer, FooterModel> { }
 
-public class GenericTableView
+public class TableView
 <
-    Cell: TableViewCell<Model>, Model,
-    Header: BaseTableViewHeaderFooterView<HeaderModel>, HeaderModel,
-    Footer: BaseTableViewHeaderFooterView<FooterModel>, FooterModel
+    Cell: TableViewCell<View>, View,
+    Header: TableViewHeaderFooterView<HeaderModel>, HeaderModel,
+    Footer: TableViewHeaderFooterView<FooterModel>, FooterModel
 >
 : UITableView, UITableViewDataSource, UITableViewDelegate {
+    public typealias Model = Cell.Model
     
     public var didSelectHeader: Completion<HeaderModel>?
     public var didResetHeader: Completion<HeaderModel>?
@@ -49,7 +50,7 @@ public class GenericTableView
     public var sections: [[Model]] = []
     public var headerModels: [HeaderModel] = []
     public var footerModels: [FooterModel] = []
-    public var settings: GenericTableViewSettings!
+    public var settings: TableViewSettings!
     
     public init(with style: UITableView.Style = .plain) {
         super.init(frame: .zero, style: style)
@@ -69,12 +70,12 @@ public class GenericTableView
         registerHeaderFooter(Footer.self)
     }
     
-    public func config(with settings: GenericTableViewSettings) {
+    public func config(with settings: TableViewSettings) {
         self.settings = settings
     }
     
     public func configData(
-        settings: GenericTableViewSettings,
+        settings: TableViewSettings,
         sections: [[Model]],
         headerModels: [HeaderModel] = [],
         footerModels: [FooterModel] = [],

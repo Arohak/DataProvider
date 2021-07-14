@@ -5,33 +5,34 @@
 
 import UIKit
 
-public class GenericCollectionViewWithoutHeaderFooter
+public class CollectionViewWithoutHeaderFooter
 <
     Cell: CollectionViewCell<Model>, Model
 >
-: GenericCollectionView<Cell, Model, BaseCollectionReusableView<Any>, Any, BaseCollectionReusableView<Any>, Any> { }
+: CollectionView<Cell, Model, CollectionReusableView<Any>, Any, CollectionReusableView<Any>, Any> { }
 
 public class GenericCollectionViewWithoutFooter
 <
     Cell: CollectionViewCell<Model>, Model,
-    Header: BaseCollectionReusableView<HeaderModel>, HeaderModel
+    Header: CollectionReusableView<HeaderModel>, HeaderModel
 >
-: GenericCollectionView<Cell, Model, Header, HeaderModel, BaseCollectionReusableView<Any>, Any> { }
+: CollectionView<Cell, Model, Header, HeaderModel, CollectionReusableView<Any>, Any> { }
 
 public class GenericCollectionViewWithoutHeader
 <
     Cell: CollectionViewCell<Model>, Model,
-    Footer: BaseCollectionReusableView<FooterModel>, FooterModel
+    Footer: CollectionReusableView<FooterModel>, FooterModel
 >
-: GenericCollectionView<Cell, Model, BaseCollectionReusableView<Any>, Any, Footer, FooterModel> { }
+: CollectionView<Cell, Model, CollectionReusableView<Any>, Any, Footer, FooterModel> { }
 
-public class GenericCollectionView
+public class CollectionView
 <
-    Cell: CollectionViewCell<Model>, Model,
-    Header: BaseCollectionReusableView<HeaderModel>, HeaderModel,
-    Footer: BaseCollectionReusableView<FooterModel>, FooterModel
+    Cell: CollectionViewCell<View>, View,
+    Header: CollectionReusableView<HeaderModel>, HeaderModel,
+    Footer: CollectionReusableView<FooterModel>, FooterModel
 >
 : UICollectionView, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    public typealias Model = Cell.Model
 
     public var didSelectHeader: Completion<HeaderModel>?
     public var didResetHeader: Completion<HeaderModel>?
@@ -47,7 +48,7 @@ public class GenericCollectionView
     public var sections: [[Model]] = []
     public var headerModels: [HeaderModel] = []
     public var footerModels: [FooterModel] = []
-    public var settings: GenericCollectionViewSettings!
+    public var settings: CollectionViewSettings!
     
     public init(scrollDirection: UICollectionView.ScrollDirection = .vertical) {
         let layout = UICollectionViewFlowLayout()
@@ -69,12 +70,12 @@ public class GenericCollectionView
         registerFooter(Footer.self)
     }
     
-    public func config(with settings: GenericCollectionViewSettings) {
+    public func config(with settings: CollectionViewSettings) {
         self.settings = settings
     }
     
     public func configData(
-        settings: GenericCollectionViewSettings,
+        settings: CollectionViewSettings,
         sections: [[Model]],
         headerModels: [HeaderModel] = [],
         footerModels: [FooterModel] = [],

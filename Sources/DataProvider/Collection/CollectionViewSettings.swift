@@ -4,7 +4,7 @@
 
 import UIKit
 
-public struct GenericCollectionViewSettings {
+public struct CollectionViewSettings {
     var headerSizes: [CGSize]   = []
     var footerSizes: [CGSize]   = []
     let itemSize: CGSize        = .zero

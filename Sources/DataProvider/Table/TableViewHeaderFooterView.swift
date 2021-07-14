@@ -5,7 +5,7 @@
 
 import UIKit
 
-open class BaseCollectionReusableView<Model>: UICollectionReusableView {
+open class TableViewHeaderFooterView<Model>: UITableViewHeaderFooterView {
     var index: Int!
     var model: Model!
     var action: Completion<Model>?

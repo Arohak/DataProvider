@@ -4,7 +4,7 @@
 
 import UIKit
 
-public struct GenericTableViewSettings {
+public struct TableViewSettings {
     var rowHeights: [CGFloat]       = []
     var headerHeights: [CGFloat]    = []
     var footerHeights: [CGFloat]    = []

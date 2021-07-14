@@ -5,17 +5,18 @@
 
 import UIKit
 
-public class GenericTableDataProvider<
-    Cell: GenericTableViewCell<View>, View
+public class TableViewDataProvider
+<
+    Cell: TableViewCell<View>, View
 >
 : NSObject, UITableViewDataSource, UITableViewDelegate {
     
     public var didSelect: Completion<View.Model>?
-    private var settings: GenericTableViewSettings!
+    private var settings: TableViewSettings!
     private weak var tableView: UITableView!
     private var models = [View.Model]()
 
-    public init(with settings: GenericTableViewSettings = .init(), tableView: UITableView) {
+    public init(with settings: TableViewSettings = .init(), tableView: UITableView) {
         super.init()
         self.settings = settings
         self.tableView = tableView

@@ -5,18 +5,18 @@
 
 import UIKit
 
-public class GenericCollectionDataProvider
+public class CollectionViewDataProvider
 <
-    Cell: GenericCollectionViewCell<View>, View
+    Cell: CollectionViewCell<View>, View
 >
 : NSObject, UICollectionViewDataSource, UICollectionViewDelegate {
     
     public var didSelect: ((View.Model) -> Void)?
-    private var settings: GenericCollectionViewSettings!
+    private var settings: CollectionViewSettings!
     private weak var collectionView: UICollectionView!
     private var models = [View.Model]()
 
-    init(with settings: GenericCollectionViewSettings = .init(), collectionView: UICollectionView) {
+    init(with settings: CollectionViewSettings = .init(), collectionView: UICollectionView) {
         super.init()
         self.settings = settings
         self.collectionView = collectionView
