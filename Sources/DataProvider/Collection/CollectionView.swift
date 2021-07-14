@@ -34,6 +34,11 @@ public class CollectionView
 : UICollectionView, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     public typealias Model = Cell.Model
 
+    public var sections: [[Model]] = []
+    public var headerModels: [HeaderModel] = []
+    public var footerModels: [FooterModel] = []
+    public var settings: CollectionViewSettings
+    
     public var didSelectHeader: Completion<HeaderModel>?
     public var didResetHeader: Completion<HeaderModel>?
     public var didSelectFooter: Completion<FooterModel>?
@@ -44,11 +49,6 @@ public class CollectionView
     public var didEndDisplaying: Completion<Cell?>?
     public var didScroll: Completion<UIScrollView>?
     public var didEndDragging: Completion<UIScrollView>?
-
-    public var sections: [[Model]] = []
-    public var headerModels: [HeaderModel] = []
-    public var footerModels: [FooterModel] = []
-    public var settings: CollectionViewSettings
     
     public init(settings: CollectionViewSettings = .init(), scrollDirection: UICollectionView.ScrollDirection = .vertical) {
         self.settings = settings
@@ -70,11 +70,7 @@ public class CollectionView
         registerHeader(Header.self)
         registerFooter(Footer.self)
     }
-    
-    public func config(with settings: CollectionViewSettings) {
-        self.settings = settings
-    }
-    
+
     public func configData(
         settings: CollectionViewSettings,
         sections: [[Model]],
@@ -89,6 +85,7 @@ public class CollectionView
         didScroll: Completion<UIScrollView>? = nil,
         didEndDragging: Completion<UIScrollView>? = nil
     ) {
+        updateData(sections: sections, headerModels: headerModels, footerModels: footerModels)
         self.settings = settings
         self.didSelectHeader = didSelectHeader
         self.didSelectFooter = didSelectFooter
@@ -98,14 +95,14 @@ public class CollectionView
         self.didEndDisplaying = didEndDisplaying
         self.didScroll = didScroll
         self.didEndDragging = didEndDragging
-        
-        updateData(with: sections, headerModels: headerModels, footerModels: footerModels)
         reloadData()
     }
     
-    public func updateData(with sections: [[Model]],
-                           headerModels: [HeaderModel] = [],
-                           footerModels: [FooterModel] = []) {
+    public func updateData(
+        sections: [[Model]],
+        headerModels: [HeaderModel] = [],
+        footerModels: [FooterModel] = []
+    ) {
         self.sections = sections
         updateHeader(with: headerModels)
         updateFooter(with: footerModels)

@@ -34,8 +34,12 @@ public class TableView
 : UITableView, UITableViewDataSource, UITableViewDelegate {
     public typealias Model = Cell.Model
     
+    public var settings: TableViewSettings
+    public var sections: [[Model]] = []
+    public var headerModels: [HeaderModel] = []
+    public var footerModels: [FooterModel] = []
+    
     public var didSelectHeader: Completion<HeaderModel>?
-    public var didResetHeader: Completion<HeaderModel>?
     public var didSelectFooter: Completion<FooterModel>?
     public var didSelect: Completion<Model>?
     public var didDeselect: Completion<Model>?
@@ -47,10 +51,6 @@ public class TableView
     public var didEndEditing: Completion<IndexPath?>?
     public var didScroll: Completion<UIScrollView>?
     public var didEndDragging: Completion<UIScrollView>?
-    public var sections: [[Model]] = []
-    public var headerModels: [HeaderModel] = []
-    public var footerModels: [FooterModel] = []
-    public var settings: TableViewSettings
     
     public init(settings: TableViewSettings = .init(), style: UITableView.Style = .plain) {
         self.settings = settings
@@ -71,10 +71,6 @@ public class TableView
         registerHeaderFooter(Footer.self)
     }
     
-    public func config(with settings: TableViewSettings) {
-        self.settings = settings
-    }
-    
     public func configData(
         settings: TableViewSettings,
         sections: [[Model]],
@@ -83,34 +79,50 @@ public class TableView
         didSelectHeader: Completion<HeaderModel>? = nil,
         didSelectFooter: Completion<FooterModel>? = nil,
         didSelect: Completion<Model>? = nil,
+        didDeselect: Completion<Model>? = nil,
         cellForItem: Completion<(index: Int, cell: Cell)>? = nil,
+        didEditing: Completion<(UITableViewCell.EditingStyle, IndexPath?)>? = nil,
+        willBeginEditing: Completion<IndexPath?>? = nil,
+        didEndEditing: Completion<IndexPath?>? = nil,
         willDisplay: Completion<Cell?>? = nil,
         didEndDisplaying: Completion<Cell?>? = nil,
-        
         didScroll: Completion<UIScrollView>? = nil,
         didEndDragging: Completion<UIScrollView>? = nil
     ) {
+        updateData(sections: sections, headerModels: headerModels, footerModels: footerModels)
         self.settings = settings
         self.didSelectHeader = didSelectHeader
         self.didSelectFooter = didSelectFooter
         self.didSelect = didSelect
+        self.didDeselect = didDeselect
         self.cellForItem = cellForItem
+        self.didEditing = didEditing
+        self.willBeginEditing = willBeginEditing
+        self.didEndEditing = didEndEditing
         self.willDisplay = willDisplay
         self.didEndDisplaying = didEndDisplaying
         self.didScroll = didScroll
         self.didEndDragging = didEndDragging
-        
-        updateData(with: sections, headerModels: headerModels, footerModels: footerModels)
         reloadData()
     }
     
-    public func updateData(with sections: [[Model]],
-                           headerModels: [HeaderModel] = [],
-                           footerModels: [FooterModel] = []) {
+    public func updateData(
+        sections: [[Model]],
+        headerModels: [HeaderModel] = [],
+        footerModels: [FooterModel] = []
+    ) {
         self.sections = sections
-        self.headerModels = headerModels
-        self.footerModels = footerModels
+        updateHeader(with: headerModels)
+        updateFooter(with: footerModels)
         reloadData()
+    }
+    
+    public func updateHeader(with headerModels: [HeaderModel]) {
+        self.headerModels = headerModels
+    }
+
+    public func updateFooter(with footerModels: [FooterModel]) {
+        self.footerModels = footerModels
     }
     
     public override func numberOfRows(inSection section: Int) -> Int {
@@ -198,8 +210,8 @@ public class TableView
     }
 
     public func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
-        let canEditRow = settings.canEditRows[safe: indexPath.section] ?? false
-        return canEditRow
+        let shouldHighlightRow = settings.shouldHighlightRows[safe: indexPath.section] ?? false
+        return shouldHighlightRow
     }
     
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
