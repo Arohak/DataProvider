@@ -48,9 +48,10 @@ public class CollectionView
     public var sections: [[Model]] = []
     public var headerModels: [HeaderModel] = []
     public var footerModels: [FooterModel] = []
-    public var settings: CollectionViewSettings!
+    public var settings: CollectionViewSettings
     
-    public init(scrollDirection: UICollectionView.ScrollDirection = .vertical) {
+    init(settings: CollectionViewSettings = .init(), scrollDirection: UICollectionView.ScrollDirection = .vertical) {
+        self.settings = settings
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = scrollDirection
         super.init(frame: .zero, collectionViewLayout: layout)

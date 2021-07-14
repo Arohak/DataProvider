@@ -16,7 +16,7 @@ public class TableViewDataProvider
     private weak var tableView: UITableView!
     private var models = [View.Model]()
 
-    public init(with settings: TableViewSettings = .init(), tableView: UITableView) {
+    init(settings: TableViewSettings = .init(), tableView: UITableView) {
         super.init()
         self.settings = settings
         self.tableView = tableView

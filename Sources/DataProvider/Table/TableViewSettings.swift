@@ -5,10 +5,8 @@
 import UIKit
 
 public struct TableViewSettings {
-    var rowHeights: [CGFloat]       = []
-    var headerHeights: [CGFloat]    = []
-    var footerHeights: [CGFloat]    = []
-    var canEditRows: [Bool]         = []
-    
-    public init() {}
+    public var rowHeights: [CGFloat]       = []
+    public var headerHeights: [CGFloat]    = []
+    public var footerHeights: [CGFloat]    = []
+    public var canEditRows: [Bool]         = []
 }

@@ -16,7 +16,7 @@ public class CollectionViewDataProvider
     private weak var collectionView: UICollectionView!
     private var models = [View.Model]()
 
-    init(with settings: CollectionViewSettings = .init(), collectionView: UICollectionView) {
+    init(settings: CollectionViewSettings = .init(), collectionView: UICollectionView) {
         super.init()
         self.settings = settings
         self.collectionView = collectionView

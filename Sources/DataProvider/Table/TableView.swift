@@ -50,9 +50,10 @@ public class TableView
     public var sections: [[Model]] = []
     public var headerModels: [HeaderModel] = []
     public var footerModels: [FooterModel] = []
-    public var settings: TableViewSettings!
+    public var settings: TableViewSettings
     
-    public init(with style: UITableView.Style = .plain) {
+    init(settings: TableViewSettings = .init(), style: UITableView.Style = .plain) {
+        self.settings = settings
         super.init(frame: .zero, style: style)
         configure()
     }

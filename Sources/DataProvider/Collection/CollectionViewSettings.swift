@@ -5,12 +5,10 @@
 import UIKit
 
 public struct CollectionViewSettings {
-    var headerSizes: [CGSize]   = []
-    var footerSizes: [CGSize]   = []
-    let itemSize: CGSize        = .zero
-    var inset: UIEdgeInsets     = .zero
-    var itemSpacing: CGFloat    = 0
-    var lineSpacing: CGFloat    = 0
-    
-    public init() {}
+    public var headerSizes: [CGSize]    = []
+    public var footerSizes: [CGSize]    = []
+    public var itemSize: CGSize         = .zero
+    public var inset: UIEdgeInsets      = .zero
+    public var itemSpacing: CGFloat     = 0
+    public var lineSpacing: CGFloat     = 0
 }
