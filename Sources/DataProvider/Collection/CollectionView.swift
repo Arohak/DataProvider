@@ -50,7 +50,7 @@ public class CollectionView
     public var footerModels: [FooterModel] = []
     public var settings: CollectionViewSettings
     
-    init(settings: CollectionViewSettings = .init(), scrollDirection: UICollectionView.ScrollDirection = .vertical) {
+    public init(settings: CollectionViewSettings = .init(), scrollDirection: UICollectionView.ScrollDirection = .vertical) {
         self.settings = settings
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = scrollDirection

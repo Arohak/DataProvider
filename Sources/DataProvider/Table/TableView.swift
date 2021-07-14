@@ -52,7 +52,7 @@ public class TableView
     public var footerModels: [FooterModel] = []
     public var settings: TableViewSettings
     
-    init(settings: TableViewSettings = .init(), style: UITableView.Style = .plain) {
+    public init(settings: TableViewSettings = .init(), style: UITableView.Style = .plain) {
         self.settings = settings
         super.init(frame: .zero, style: style)
         configure()

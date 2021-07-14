@@ -9,4 +9,16 @@ public struct TableViewSettings {
     public var headerHeights: [CGFloat]    = []
     public var footerHeights: [CGFloat]    = []
     public var canEditRows: [Bool]         = []
+    
+    public init(
+        rowHeights: [CGFloat] = [],
+        headerHeights: [CGFloat] = [],
+        footerHeights: [CGFloat] = [],
+        canEditRows: [Bool] = []
+    ) {
+        self.rowHeights = rowHeights
+        self.headerHeights = headerHeights
+        self.footerHeights = footerHeights
+        self.canEditRows = canEditRows
+    }
 }
