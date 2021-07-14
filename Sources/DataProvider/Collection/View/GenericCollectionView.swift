@@ -103,8 +103,7 @@ public class GenericCollectionView
     }
 
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let items = sections[section]
-        return items.count
+        return sections[safe: section]?.count ?? 0
     }
 
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

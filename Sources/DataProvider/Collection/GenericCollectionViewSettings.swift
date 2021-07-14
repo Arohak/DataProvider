@@ -11,4 +11,6 @@ public struct GenericCollectionViewSettings {
     var inset: UIEdgeInsets     = .zero
     var itemSpacing: CGFloat    = 0
     var lineSpacing: CGFloat    = 0
+    
+    public init() {}
 }

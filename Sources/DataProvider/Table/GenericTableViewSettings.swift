@@ -5,7 +5,10 @@
 import UIKit
 
 public struct GenericTableViewSettings {
-    var heightForRow: CGFloat? = nil
+    var rowHeights: [CGFloat]       = []
+    var headerHeights: [CGFloat]    = []
+    var footerHeights: [CGFloat]    = []
+    var canEditRows: [Bool]         = []
     
     public init() {}
 }

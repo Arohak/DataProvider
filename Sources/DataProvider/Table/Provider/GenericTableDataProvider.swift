@@ -48,6 +48,6 @@ public class GenericTableDataProvider<View: ContainerView, Cell: TableViewCell<V
     }
     
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return settings.heightForRow ?? UITableView.automaticDimension
+        return settings.rowHeights[safe: indexPath.section] ?? UITableView.automaticDimension
     }
 }
