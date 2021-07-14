@@ -4,7 +4,7 @@
 
 import UIKit
 
-public class CollectionViewCell<View: ContainerView>: UICollectionViewCell {
+public class GenericCollectionViewCell<View: ContainerView>: CollectionViewCell<View.Model> {
     public lazy var view: View = {
         let view = View()
         addSubview(view)
@@ -16,7 +16,7 @@ public class CollectionViewCell<View: ContainerView>: UICollectionViewCell {
         return view
     }()
     
-    public var model: View.Model! {
+    public override var model: View.Model! {
         didSet {
             view.update(with: model)
         }

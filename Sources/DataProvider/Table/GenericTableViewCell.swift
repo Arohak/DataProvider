@@ -4,7 +4,7 @@
 
 import UIKit
 
-open class TableViewCell<View: ContainerView>: UITableViewCell {
+public class GenericTableViewCell<View: ContainerView>: TableViewCell<View.Model> {
     public lazy var view: View = {
         let view = View()
         contentView.addSubview(view)
@@ -16,7 +16,7 @@ open class TableViewCell<View: ContainerView>: UITableViewCell {
         return view
     }()
     
-    public var model: View.Model! {
+    public override var model: View.Model! {
         didSet {
             view.update(with: model)
         }

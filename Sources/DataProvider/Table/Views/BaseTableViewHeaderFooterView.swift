@@ -5,12 +5,6 @@
 
 import UIKit
 
-public class BaseTableViewCell<Model>: UITableViewCell {
-    var index: Int!
-    var model: Model!
-    var action: Completion<Model>?
-}
-
 public class BaseTableViewHeaderFooterView<Model>: UITableViewHeaderFooterView {
     var index: Int!
     var model: Model!

@@ -7,27 +7,27 @@ import UIKit
 
 public class GenericCollectionViewWithoutHeaderFooter
 <
-    Cell: BaseCollectionViewCell<Model>, Model
+    Cell: CollectionViewCell<Model>, Model
 >
 : GenericCollectionView<Cell, Model, BaseCollectionReusableView<Any>, Any, BaseCollectionReusableView<Any>, Any> { }
 
 public class GenericCollectionViewWithoutFooter
 <
-    Cell: BaseCollectionViewCell<Model>, Model,
+    Cell: CollectionViewCell<Model>, Model,
     Header: BaseCollectionReusableView<HeaderModel>, HeaderModel
 >
 : GenericCollectionView<Cell, Model, Header, HeaderModel, BaseCollectionReusableView<Any>, Any> { }
 
 public class GenericCollectionViewWithoutHeader
 <
-    Cell: BaseCollectionViewCell<Model>, Model,
+    Cell: CollectionViewCell<Model>, Model,
     Footer: BaseCollectionReusableView<FooterModel>, FooterModel
 >
 : GenericCollectionView<Cell, Model, BaseCollectionReusableView<Any>, Any, Footer, FooterModel> { }
 
 public class GenericCollectionView
 <
-    Cell: BaseCollectionViewCell<Model>, Model,
+    Cell: CollectionViewCell<Model>, Model,
     Header: BaseCollectionReusableView<HeaderModel>, HeaderModel,
     Footer: BaseCollectionReusableView<FooterModel>, FooterModel
 >

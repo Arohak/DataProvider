@@ -5,7 +5,10 @@
 
 import UIKit
 
-public class GenericTableDataProvider<View: ContainerView, Cell: TableViewCell<View>>: NSObject, UITableViewDataSource, UITableViewDelegate {
+public class GenericTableDataProvider<
+    Cell: GenericTableViewCell<View>, View
+>
+: NSObject, UITableViewDataSource, UITableViewDelegate {
     
     public var didSelect: Completion<View.Model>?
     private var settings: GenericTableViewSettings!

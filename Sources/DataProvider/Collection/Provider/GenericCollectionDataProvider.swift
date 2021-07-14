@@ -7,7 +7,7 @@ import UIKit
 
 public class GenericCollectionDataProvider
 <
-    View: ContainerView, Cell: CollectionViewCell<View>
+    Cell: GenericCollectionViewCell<View>, View
 >
 : NSObject, UICollectionViewDataSource, UICollectionViewDelegate {
     
