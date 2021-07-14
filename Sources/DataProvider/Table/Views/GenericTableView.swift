@@ -5,6 +5,26 @@
 
 import UIKit
 
+public class GenericTableViewWithoutHeaderFooter
+<
+    Cell: BaseTableViewCell<Model>, Model
+>
+: GenericTableView<Cell, Model, BaseTableViewHeaderFooterView<Any>, Any, BaseTableViewHeaderFooterView<Any>, Any> { }
+
+public class GenericTableViewWithoutFooter
+<
+    Cell: BaseTableViewCell<Model>, Model,
+    Header: BaseTableViewHeaderFooterView<HeaderModel>, HeaderModel
+>
+: GenericTableView<Cell, Model, Header, HeaderModel, BaseTableViewHeaderFooterView<Any>, Any> { }
+
+public class GenericTableViewWithoutHeader
+<
+    Cell: BaseTableViewCell<Model>, Model,
+    Footer: BaseTableViewHeaderFooterView<FooterModel>, FooterModel
+>
+: GenericTableView<Cell, Model, BaseTableViewHeaderFooterView<Any>, Any, Footer, FooterModel> { }
+
 public class GenericTableView
 <
     Cell: BaseTableViewCell<Model>, Model,
